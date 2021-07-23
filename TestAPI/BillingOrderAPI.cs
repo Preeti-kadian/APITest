@@ -1,17 +1,33 @@
-﻿using NUnit.Framework;
+﻿using System;
 using RestSharp;
 
-namespace TestAPI
+namespace APITest.API
 {
-    public class Tests
+    public class BillingOrderAPI
     {
-        [SetUp]
-        public void Setup()
+        private readonly string baseUrl = "http://localhost:8080";
+
+        public IRestResponse GetOrderById(string id)
         {
+            //setting task
+            var client = new RestClient($"{baseUrl}/BillingOrder/{id}");
+            var request = new RestRequest(Method.GET);
+            //Execute task
+            IRestResponse response = client.Execute(request);
+            return response;
         }
 
-        [Test]
-        public void PostOrderTestCase(string body)
+        public IRestResponse GetOrderAll()
+        {
+            //setting task
+            var client = new RestClient($"{baseUrl}/BillingOrder/");
+            var request = new RestRequest(Method.GET);
+            //Execute task
+            IRestResponse response = client.Execute(request);
+            return response;
+        }
+
+        public IRestResponse PostOrder(string body)
         {
             //setting task
             var client = new RestClient($"{baseUrl}/BillingOrder");
@@ -23,34 +39,9 @@ namespace TestAPI
             //Execute task
             IRestResponse response = client.Execute(request);
             return response;
-
         }
 
-        [Test]
-        public void GetOrderByIdTestCase(string id)
-        {
-            //setting task
-            var client = new RestClient($"{baseUrl}/BillingOrder/{id}");
-            var request = new RestRequest(Method.GET);
-            //Execute task
-            IRestResponse response = client.Execute(request);
-            return response;
-
-        }
-
-        [Test]
-        public void GetAllOrderTestCase()
-        {
-            //setting task
-            var client = new RestClient($"{baseUrl}/BillingOrder/");
-            var request = new RestRequest(Method.GET);
-            //Execute task
-            IRestResponse response = client.Execute(request);
-            return response;
-        }
-
-        [Test]
-        public void PutOrderTestCase(string id, string body)
+        public IRestResponse UpdateOrder(string id, string body)
         {
             //setting task
             var client = new RestClient($"{baseUrl}/BillingOrder/{id}");
@@ -64,8 +55,7 @@ namespace TestAPI
 
         }
 
-        [Test]
-        public void DeleteOrderByIdTestCase(string id)
+        public IRestResponse DeleteByOrder(string id)
         {
             //setting task
             var client = new RestClient($"{baseUrl}/BillingOrder/{id}");
@@ -75,7 +65,6 @@ namespace TestAPI
             //Execute task
             IRestResponse response = client.Execute(request);
             return response;
-
         }
     }
 }

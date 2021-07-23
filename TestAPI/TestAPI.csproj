@@ -15,5 +15,13 @@
 
   <ItemGroup>
     <None Remove="RestSharp" />
+    <None Remove="API \" />
+    <None Remove="UI Test\" />
+    <None Remove="BDD\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="API \" />
+    <Folder Include="UI Test\" />
+    <Folder Include="BDD\" />
   </ItemGroup>
 </Project>
