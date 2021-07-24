@@ -1,7 +1,6 @@
-﻿using System;
-using RestSharp;
+﻿using RestSharp;
 
-namespace APITest.API
+namespace TestAPI.API
 {
     public class BillingOrderAPI
     {
@@ -55,10 +54,10 @@ namespace APITest.API
 
         }
 
-        public IRestResponse DeleteByOrder(string id)
+        public IRestResponse DeleteOrderById(string id)
         {
             //setting task
-            var client = new RestClient($"{baseUrl}/BillingOrder/{id}");
+            var client = new RestClient("${baseUrl}/BillingOrder/{id}");
             var request = new RestRequest(Method.DELETE);
 
 
