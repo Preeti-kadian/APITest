@@ -16,6 +16,8 @@
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
     <PackageReference Include="Selenium.Support" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="91.0.4472.10100" />
+    <PackageReference Include="Faker.Net" Version="1.5.138" />
+    <PackageReference Include="LumenWorksCsvReader" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,10 +30,22 @@
     <None Remove="Selenium.WebDriver" />
     <None Remove="Selenium.Support" />
     <None Remove="Selenium.WebDriver.ChromeDriver" />
+    <None Remove="Utility\" />
+    <None Remove="Faker" />
+    <None Remove="Faker.Net" />
+    <None Remove="LumenWorksCsvReader" />
+    <None Remove="Test Data\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="API \" />
     <Folder Include="UI Test\" />
     <Folder Include="Model\" />
+    <Folder Include="Utility\" />
+    <Folder Include="TestData\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="TestData\billingOrderTestData.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

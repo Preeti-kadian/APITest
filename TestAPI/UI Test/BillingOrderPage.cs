@@ -10,7 +10,6 @@ using OpenQA.Selenium.Interactions;
 using NUnit.Framework;
 using APITest.API.Model;
 
-[TestFixture]
 public class BillingOrderPage
 {
     private IWebDriver driver;
@@ -20,7 +19,7 @@ public class BillingOrderPage
         this.driver = driver;
     }
 
-    [Test]
+
     public void SubmitBillingorder(BillingOrder order)
     {
         driver.Navigate().GoToUrl("http://qaauto.co.nz/billing-order-form/");
