@@ -10,6 +10,7 @@ using OpenQA.Selenium.Interactions;
 using NUnit.Framework;
 using APITest.API.Model;
 
+[TestFixture]
 public class BillingOrderPage
 {
     private IWebDriver driver;
@@ -19,7 +20,7 @@ public class BillingOrderPage
         this.driver = driver;
     }
 
-
+    [Test]
     public void SubmitBillingorder(BillingOrder order)
     {
         driver.Navigate().GoToUrl("http://qaauto.co.nz/billing-order-form/");
@@ -35,9 +36,10 @@ public class BillingOrderPage
         driver.FindElement(By.Id("wpforms-24-field_3-address2")).SendKeys(order.addressLine2);
         driver.FindElement(By.Id("wpforms-24-field_3-city")).SendKeys(order.city);
         driver.FindElement(By.Id("wpforms-24-field_3-postal")).SendKeys(order.zipCode);
+
         {
-            var dropdown = driver.FindElement(By.Id("wpforms-confirmation-24"));
-            dropdown.FindElement(By.XPath("//option[.='Iowa']")).Click();
+            var dropdown = driver.FindElement(By.Id("wpforms-24-field_3-state"));
+            dropdown.FindElement(By.XPath("//option[. = 'California']")).Click();
         }
         driver.FindElement(By.Id("wpforms-24-field_4-container")).Click();
         driver.FindElement(By.XPath("//*[@id='wpforms-24-field_4']/li[2]/label")).Click();
@@ -49,4 +51,3 @@ public class BillingOrderPage
         driver.FindElement(By.Id("wpforms-submit-24")).Click();
     }
 }
-
